@@ -28,7 +28,7 @@ CREATE TABLE `author` (
   `id_author` int(11) NOT NULL AUTO_INCREMENT,
   `full_name` varchar(45) NOT NULL,
   PRIMARY KEY (`id_author`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,7 +37,7 @@ CREATE TABLE `author` (
 
 LOCK TABLES `author` WRITE;
 /*!40000 ALTER TABLE `author` DISABLE KEYS */;
-INSERT INTO `author` VALUES (5,'James Patterson'),(6,'Lisa See'),(7,'Chris Bohjalian'),(8,'Ben Shapiro'),(10,'Stephen King'),(11,'Liane Moriarty'),(13,'Steven Pinker'),(14,'Simone St. James');
+INSERT INTO `author` VALUES (5,'James Patterson'),(6,'Lisa See'),(7,'Chris Bohjalian'),(8,'Ben Shapiro'),(10,'Stephen King'),(11,'Liane Moriarty'),(13,'Steven Pinker'),(14,'Simone St. James'),(15,'asd'),(16,'khkjh');
 /*!40000 ALTER TABLE `author` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -62,7 +62,7 @@ CREATE TABLE `billing_info` (
   PRIMARY KEY (`id_billing_info`),
   UNIQUE KEY `id_user_UNIQUE` (`id_user`),
   CONSTRAINT `fk_billing_info_user` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -91,7 +91,7 @@ CREATE TABLE `blog` (
   `id_user` int(11) NOT NULL,
   PRIMARY KEY (`id_blog`),
   KEY `fk_blog_user_idx` (`id_user`),
-  CONSTRAINT `fk_blog_user` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`)
+  CONSTRAINT `fk_blog_user` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -122,8 +122,8 @@ CREATE TABLE `blog_review` (
   KEY `fk_blog_review_blog_idx` (`id_blog`),
   KEY `fk_blog_review_user_idx` (`id_user`),
   CONSTRAINT `fk_blog_review_blog` FOREIGN KEY (`id_blog`) REFERENCES `blog` (`id_blog`),
-  CONSTRAINT `fk_blog_review_user` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+  CONSTRAINT `fk_blog_review_user` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -132,7 +132,7 @@ CREATE TABLE `blog_review` (
 
 LOCK TABLES `blog_review` WRITE;
 /*!40000 ALTER TABLE `blog_review` DISABLE KEYS */;
-INSERT INTO `blog_review` VALUES (1,'Good blog!','2019-02-04 00:00:00',1,22),(2,'Thanks!','2019-02-04 00:00:00',1,22),(4,'Great!','2019-03-29 21:55:20',1,22),(5,'My favorite blog!','2019-03-29 21:56:09',2,22),(6,'Thanks a lot!','2019-03-29 22:00:26',2,22),(9,'I have got a problem!','2019-03-31 22:06:19',1,22);
+INSERT INTO `blog_review` VALUES (1,'Good blog!','2019-02-04 00:00:00',1,22),(2,'Thanks!','2019-02-04 00:00:00',1,22),(4,'Great!','2019-03-29 21:55:20',1,22),(5,'My favorite blog!','2019-03-29 21:56:09',2,22),(6,'Thanks a lot!','2019-03-29 22:00:26',2,22),(9,'I have got a problem!','2019-03-31 22:06:19',1,22),(10,'ghgg','2019-04-06 17:16:39',1,22);
 /*!40000 ALTER TABLE `blog_review` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -155,7 +155,7 @@ CREATE TABLE `book` (
   PRIMARY KEY (`id_book`),
   KEY `fk_book_author_idx` (`id_author`),
   CONSTRAINT `fk_book_author` FOREIGN KEY (`id_author`) REFERENCES `author` (`id_author`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -164,7 +164,7 @@ CREATE TABLE `book` (
 
 LOCK TABLES `book` WRITE;
 /*!40000 ALTER TABLE `book` DISABLE KEYS */;
-INSERT INTO `book` VALUES (6,'The Cornwalls Are Gone','Intelligence officer Amy Cornwall knows too much, way too much. ','the-cornwalls-are-gone.jpg','demo-back-side.jpg','eng','2019-04-01',5),(7,'The Island of Sea Women','Mi-ja and Young-sook, two girls living on the Korean island of Jeju, are best friends that come from very different backgrounds. When they are old enough, they begin working in the sea with their village’s all-female diving collective, led by Young-sook’s mother. As the girls take up their positions as baby divers, they know they are beginning a life of excitement and responsibility but also danger.','the-island-of-sea-women.jpg','demo-back-side.jpg','eng','2019-04-02',6),(8,'The Flight Attendant','Cassandra Bowden is no stranger to hungover mornings. She\'s a binge drinker, her job with the airline making it easy to find adventure, and the occasional blackouts seem to be inevitable. She lives with them, and the accompanying self-loathing. When she awakes in a Dubai hotel room, she tries to piece the previous night back together, counting the minutes until she has to catch her crew shuttle to the airport. She quietly slides out of bed, careful not to aggravate her already pounding head, and looks at the man she spent the night with. She sees his dark hair. His utter stillness. And blood, a slick, still wet pool on the crisp white sheets. Afraid to call the police - she\'s a single woman alone in a hotel room far from home - Cassie begins to lie. She lies as she joins the other flight attendants and pilots in the van. She lies on the way to Paris as she works the first class cabin. She lies to the FBI agents in New York who meet her at the gate. Soon it\'s too late to come clean-or face the truth about what really happened back in Dubai. Could she have killed him? If not, who did? ','the-flight-attendant.jpg','demo-back-side.jpg','eng','2019-03-01',7),(9,'The Right Side of History','America has a God-shaped hole in its heart, argues New York Times bestselling author Ben Shapiro, and we shouldn\'t fill it with politics and hate.','the-right-side-of-history.jpg','demo-back-side.jpg','eng','2019-02-01',8),(11,'Pet Sematary','Dr. Louis Creed and his wife Rachel chose rural Maine to settle his family and bring up their children. It was a better place than smog-covered Chicago — or so he thought. But that was before he became acquainted with the old pet burial ground located in the backwoods of the quiet community of Ludlow.','pet-sematary.jpg','demo-back-side.jpg','eng','2018-06-23',10),(12,'What Alice Forgot','Alice Love is twenty-nine, crazy about her husband, and pregnant with her first child. So imagine Alice’s surprise when she comes to on the floor of a gym (a gym! She HATES the gym) and is whisked off to the hospital where she discovers the honeymoon is truly over—she’s getting divorced, she has three kids, and she’s actually 39 years old. Alice must reconstruct the events of a lost decade, and find out whether it’s possible to reconstruct her life at the same time. She has to figure out why her sister hardly talks to her, and how is it that she’s become one of those super skinny moms with really expensive clothes. Ultimately, Alice must discover whether forgetting is a blessing or a curse, and whether it’s possible to start over...','what-alice-forgot.jpg','demo-back-side.jpg','eng','2017-03-06',11),(13,'The First Lady','In James Patterson\'s new stand-alone thriller, one secret can bring down a government when the President\'s affair to remember becomes a nightmare he wishes he could forget. ','the-first-lady.jpg','demo-back-side.jpg','eng','2016-12-11',5),(14,'Enlightenment Now','Is the world really falling apart? Is the ideal of progress obsolete? In this elegant assessment of the human condition in the third millennium, cognitive scientist and public intellectual Steven Pinker urges us to step back from the gory headlines and prophecies of doom, which play to our psychological biases. Instead, follow the data: In seventy-five jaw-dropping graphs, Pinker shows that life, health, prosperity, safety, peace, knowledge, and happiness are on the rise, not just in the West, but worldwide. This progress is not the result of some cosmic force. It is a gift of the Enlightenment: the conviction that reason and science can enhance human flourishing.','enlightenment-now.jpg','demo-back-side.jpg','eng','2016-07-09',13),(15,'The Broken Girls','Vermont, 1950. There\'s a place for the girls whom no one wants—the troublemakers, the illegitimate, the too smart for their own good. It\'s called Idlewild Hall, and local legend says the boarding school is haunted. Four roommates bond over their whispered fears, their budding friendship blossoming—until one of them mysteriously disappears . . .','the-broken-girls.jpg','demo-back-side.jpg','eng','2019-01-08',14);
+INSERT INTO `book` VALUES (6,'The Cornwalls Are Gone','Intelligence officer Amy Cornwall knows too much, way too much. ','the-cornwalls-are-gone.jpg','demo-back-side.jpg','eng','2019-04-01',5),(7,'The Island of Sea Women','Mi-ja and Young-sook, two girls living on the Korean island of Jeju, are best friends that come from very different backgrounds. When they are old enough, they begin working in the sea with their village’s all-female diving collective, led by Young-sook’s mother. As the girls take up their positions as baby divers, they know they are beginning a life of excitement and responsibility but also danger.','the-island-of-sea-women.jpg','demo-back-side.jpg','eng','2019-04-02',6),(8,'The Flight Attendant','Cassandra Bowden is no stranger to hungover mornings. She\'s a binge drinker, her job with the airline making it easy to find adventure, and the occasional blackouts seem to be inevitable. She lives with them, and the accompanying self-loathing. When she awakes in a Dubai hotel room, she tries to piece the previous night back together, counting the minutes until she has to catch her crew shuttle to the airport. She quietly slides out of bed, careful not to aggravate her already pounding head, and looks at the man she spent the night with. She sees his dark hair. His utter stillness. And blood, a slick, still wet pool on the crisp white sheets. Afraid to call the police - she\'s a single woman alone in a hotel room far from home - Cassie begins to lie. She lies as she joins the other flight attendants and pilots in the van. She lies on the way to Paris as she works the first class cabin. She lies to the FBI agents in New York who meet her at the gate. Soon it\'s too late to come clean-or face the truth about what really happened back in Dubai. Could she have killed him? If not, who did? ','the-flight-attendant.jpg','demo-back-side.jpg','eng','2019-03-01',7),(9,'The Right Side of History','America has a God-shaped hole in its heart, argues New York Times bestselling author Ben Shapiro, and we shouldn\'t fill it with politics and hate.','the-right-side-of-history.jpg','demo-back-side.jpg','eng','2019-02-01',8),(11,'Pet Sematary','Dr. Louis Creed and his wife Rachel chose rural Maine to settle his family and bring up their children. It was a better place than smog-covered Chicago — or so he thought. But that was before he became acquainted with the old pet burial ground located in the backwoods of the quiet community of Ludlow.','pet-sematary.jpg','demo-back-side.jpg','eng','2018-06-23',10),(12,'What Alice Forgot','Alice Love is twenty-nine, crazy about her husband, and pregnant with her first child. So imagine Alice’s surprise when she comes to on the floor of a gym (a gym! She HATES the gym) and is whisked off to the hospital where she discovers the honeymoon is truly over—she’s getting divorced, she has three kids, and she’s actually 39 years old. Alice must reconstruct the events of a lost decade, and find out whether it’s possible to reconstruct her life at the same time. She has to figure out why her sister hardly talks to her, and how is it that she’s become one of those super skinny moms with really expensive clothes. Ultimately, Alice must discover whether forgetting is a blessing or a curse, and whether it’s possible to start over...','what-alice-forgot.jpg','demo-back-side.jpg','eng','2017-03-06',11),(13,'The First Lady','In James Patterson\'s new stand-alone thriller, one secret can bring down a government when the President\'s affair to remember becomes a nightmare he wishes he could forget. ','the-first-lady.jpg','demo-back-side.jpg','eng','2016-12-11',5),(14,'Enlightenment Now','Is the world really falling apart? Is the ideal of progress obsolete? In this elegant assessment of the human condition in the third millennium, cognitive scientist and public intellectual Steven Pinker urges us to step back from the gory headlines and prophecies of doom, which play to our psychological biases. Instead, follow the data: In seventy-five jaw-dropping graphs, Pinker shows that life, health, prosperity, safety, peace, knowledge, and happiness are on the rise, not just in the West, but worldwide. This progress is not the result of some cosmic force. It is a gift of the Enlightenment: the conviction that reason and science can enhance human flourishing.','enlightenment-now.jpg','demo-back-side.jpg','eng','2016-07-09',13);
 /*!40000 ALTER TABLE `book` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -193,7 +193,7 @@ CREATE TABLE `book_category` (
 
 LOCK TABLES `book_category` WRITE;
 /*!40000 ALTER TABLE `book_category` DISABLE KEYS */;
-INSERT INTO `book_category` VALUES (9,6,1),(10,7,2),(11,8,3),(12,9,4),(14,11,6),(15,12,7),(16,13,8),(17,14,9),(18,15,10),(19,6,13),(20,7,12),(21,12,11),(23,13,15);
+INSERT INTO `book_category` VALUES (9,6,1),(10,7,2),(11,8,3),(12,9,4),(14,11,6),(15,12,7),(16,13,8),(17,14,9),(19,6,13),(20,7,12),(21,12,11),(23,13,15);
 /*!40000 ALTER TABLE `book_category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -215,7 +215,7 @@ CREATE TABLE `cart` (
   KEY `fk_basket_book_idx` (`id_book`),
   CONSTRAINT `fk_cart_book` FOREIGN KEY (`id_book`) REFERENCES `book` (`id_book`) ON DELETE CASCADE,
   CONSTRAINT `fk_cart_user` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=147 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=155 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -224,6 +224,7 @@ CREATE TABLE `cart` (
 
 LOCK TABLES `cart` WRITE;
 /*!40000 ALTER TABLE `cart` DISABLE KEYS */;
+INSERT INTO `cart` VALUES (150,22,7,3),(151,22,8,2);
 /*!40000 ALTER TABLE `cart` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -279,7 +280,7 @@ CREATE TABLE `review` (
 
 LOCK TABLES `review` WRITE;
 /*!40000 ALTER TABLE `review` DISABLE KEYS */;
-INSERT INTO `review` VALUES (61,'Thanks!','2018-06-02 17:26:39',4,22,8),(62,'My favorite book.','2018-11-24 17:27:26',5,22,8),(63,'I have got a problem!','2018-04-02 17:27:57',2,22,9),(64,'Thanks for fast shipping!','2019-04-02 17:29:42',5,22,15),(65,'I don\'t like this book.','2019-01-11 17:30:28',3,22,6),(66,'Thanks!','2019-03-02 17:32:24',4,22,7),(67,'Prices aren\'t suitable!','2019-02-04 17:32:24',1,22,11);
+INSERT INTO `review` VALUES (61,'Thanks!','2018-06-02 17:26:39',4,22,8),(62,'My favorite book.','2018-11-24 17:27:26',5,22,8),(63,'I have got a problem!','2018-04-02 17:27:57',2,22,9),(65,'I don\'t like this book.','2019-01-11 17:30:28',3,22,6),(66,'Thanks!','2019-03-02 17:32:24',4,22,7),(67,'Prices aren\'t suitable!','2019-02-04 17:32:24',1,22,11);
 /*!40000 ALTER TABLE `review` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -326,7 +327,7 @@ CREATE TABLE `stock` (
   PRIMARY KEY (`id_stock`),
   KEY `fk_stock_book_idx` (`id_book`),
   CONSTRAINT `fk_stock_book` FOREIGN KEY (`id_book`) REFERENCES `book` (`id_book`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -335,7 +336,7 @@ CREATE TABLE `stock` (
 
 LOCK TABLES `stock` WRITE;
 /*!40000 ALTER TABLE `stock` DISABLE KEYS */;
-INSERT INTO `stock` VALUES (6,12,12.75,10,12,496,'2018-04-03 00:00:00',6),(7,24,16.95,10,8,320,'2018-02-17 00:00:00',7),(8,0,18.65,20,8,240,'2019-04-02 00:00:00',8),(9,12,19.95,20,12,66,'2019-03-01 00:00:00',9),(11,28,20.75,20,8,420,'2017-11-23 00:00:00',11),(12,18,12.15,10,6,343,'2017-10-12 00:00:00',12),(13,0,14.75,10,6,76,'2019-02-18 00:00:00',13),(14,27,22.85,15,12,21,'2018-09-14 00:00:00',14),(15,34,25.95,20,12,69,'2019-01-12 00:00:00',15);
+INSERT INTO `stock` VALUES (6,12,12.75,10,12,496,'2018-04-03 00:00:00',6),(7,24,16.95,10,8,320,'2018-02-17 00:00:00',7),(8,0,18.65,20,8,240,'2019-04-02 00:00:00',8),(9,12,19.95,20,12,66,'2019-03-01 00:00:00',9),(11,28,20.75,20,8,420,'2017-11-23 00:00:00',11),(12,18,12.15,10,6,343,'2017-10-12 00:00:00',12),(13,0,14.75,10,6,76,'2019-02-18 00:00:00',13),(14,27,22.85,15,12,21,'2018-09-14 00:00:00',14);
 /*!40000 ALTER TABLE `stock` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -385,7 +386,7 @@ CREATE TABLE `user` (
   UNIQUE KEY `email_UNIQUE` (`email`),
   KEY `fk_user_role_idx` (`id_role`),
   CONSTRAINT `fk_user_role` FOREIGN KEY (`id_role`) REFERENCES `role` (`id_role`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -414,7 +415,7 @@ CREATE TABLE `wishlist` (
   KEY `fk_bookshelf_book_idx` (`id_book`),
   CONSTRAINT `fk_wishlist_book` FOREIGN KEY (`id_book`) REFERENCES `book` (`id_book`) ON DELETE CASCADE,
   CONSTRAINT `fk_wishlist_user` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=150 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=154 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -435,4 +436,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-04-06 14:14:48
+-- Dump completed on 2019-05-10 22:05:01

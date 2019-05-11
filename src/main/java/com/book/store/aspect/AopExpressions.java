@@ -7,10 +7,6 @@ import org.aspectj.lang.annotation.Pointcut;
 @Aspect
 public class AopExpressions {
 
-    /*
-     * In order to test AOP
-     */
-
     @Pointcut("execution(* com.book.store.repository.*.get*(..))")
     void getter() {}
 

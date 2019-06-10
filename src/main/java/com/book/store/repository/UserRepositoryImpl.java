@@ -23,7 +23,7 @@ public class UserRepositoryImpl implements UserRepository {
     private JdbcTemplate jdbcTemplate;
     private static final String ADD_USER_SQL = "INSERT INTO user(name, surname, username, email, password, id_role, token, status) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
     private static final String ACTIVATE_USER_BY_TOKEN_SQL = "UPDATE user SET token=?, status=? WHERE token=?";
-    private static final String GET_USER_BY_USERNAME_SQL = "select * from user u inner join role r on u.id_role = r.id_role left join wishlist w on u.id_user = w.id_user where u.username = ?";
+    private static final String GET_USER_BY_USERNAME_SQL = "select * from user u inner join role r on u.id_role = r.id_role left join wishlist w on u.id_user = w.id_user where u.username = BINARY ?";
     private static final String UPDATE_USER_SQL = "update user set name = ?, surname = ?, username = ?, password = ? where email = ?";
     private static final String ADD_BILLING_INFO = "insert into billing_info(firstname, lastname, company_name, country, address, postcode, phone, email, id_user) values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
     private static final String SUCSCRIBE_SQL = "insert into subscriber(email) values(?)";

@@ -21,6 +21,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserService service;
 
+    //in order to manage paths
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
@@ -36,11 +37,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         // remember me (selectBooleanCheckBox and id=_spring_security_remember_me)
     }
 
-//    @Override
-//    public void configure(WebSecurity web) throws Exception {
-//        web.ignoring().antMatchers("/cart/wishlist");
-//    }
+    /*@Override
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring().antMatchers("/cart/wishlist");
+    }*/
 
+
+    //in order to manage users
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(provider());
